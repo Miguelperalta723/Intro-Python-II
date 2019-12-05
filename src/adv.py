@@ -1,4 +1,5 @@
 from room import Room
+from player import Player
 
 # Declare all the rooms
 
@@ -33,6 +34,7 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
+
 #
 # Main
 #
@@ -49,3 +51,26 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+player_name = input("whats your name bud?")
+
+player = Player(player_name, room["outside"])
+
+while True:
+    print(player.current_room)
+
+    direction = ["n" , "s" , "w" , "e"]
+    player_cmd = input("type n for norh, s for south, w for west, e for east?  ")
+
+    if player_cmd in direction:
+        player.player_move(player_cmd)
+    
+    elif player_cmd == "q":
+        print("you left the game")
+        break
+    else: 
+        print(f"wrong directiion {player.name}")
+
+    
+    
+    
+
